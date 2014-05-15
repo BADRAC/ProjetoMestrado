@@ -1,0 +1,13 @@
+<% provide(:title, 'Edição') %>
+
+<h1>Editar Edição</h1>
+
+<%= render 'form' %>
+
+</br>
+
+<div class="row">
+   	<div class="col-md-3">
+		<%= link_to 'Voltar', edition_articles_path(@edition.id),  :class => 'btn btn-default btn-sm' %>
+	</div>
+</div>

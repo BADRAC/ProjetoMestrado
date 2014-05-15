@@ -1,0 +1,61 @@
+<% provide(:title, 'Busca de Periódicos') %>
+
+<h1 class="text-center">Base de Dados Referencial - Projeto Mestrado PPGCI - UFPB</h1>
+
+<br/><br/>
+
+<div class="row">
+	<div class="col-md-2">
+	</div>
+  	<div class="col-md-8">
+		<form class="form-horizontal" role="form">
+		<%= form_tag({:controller=>"buscas", :action=>"index"}, :method=> "get") do %>
+	  	<%= text_field_tag :search, params[:search], :class => 'form-control input-lg' %>
+	</div>
+	<div class="col-md-2">
+		<%= link_to 'Dicas de Pesquisa', '/dica',  :class => 'btn btn-info' %>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-4">
+		<%= submit_tag "Buscar", :class => 'btn btn-primary btn btn-block'%>
+	</div>
+	<div class="col-md-4">
+	</div>
+	<% end %> 
+</div>
+
+
+<br/> <br/> <br/>
+<p class="text-center">Resultados da Pesquisa</p>
+<br/>
+
+	<% @articles.each do |article| %>
+
+		<table class="table table-striped table-bordered table-condensed" style="width: 100%">
+		  <tbody>	    
+		      <tr>
+		      	<td class="text-center" style="width: 15%">Título</td>
+		        <td><%= article.title %></td>
+		      <tr/>
+		      <tr>
+		        <td class="text-center" style="width: 15%">Autor(es)</td>	
+		        <td><%= article.authors.map { |author| author.first_name + " " + author.last_name }.join(", ") %></td>
+		      <tr/>  
+		      <tr>
+				<td class="text-center" style="width: 15%">Resumo</td>
+				<td><%= article.abstract %></td>
+		      <tr/>
+		      <tr>
+				<td class="text-center" style="width: 15%">Palavra(s)-chave</td>
+			    <td><%= article.keywords.map {|keyword| keyword.kw_name}.join(", ") %></td><tr/>
+			  <tr>
+				<td class="text-center" style="width: 15%">URL de Acesso</td>
+			    <td><%= link_to article.url, article.url%></td>
+			  <tr/>		    
+		  </tbody>
+		</table>
+
+	<% end %>

@@ -1,0 +1,42 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "Logo", root_path, id: "logo" %>
+      <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "Busca de Periódicos", buscas_path%></li>
+        </ul>
+          <ul class="nav pull-right">
+          <% if signed_in? %>
+            <li><%= link_to "Usuários", users_path %></li>
+          </ul>
+            <ul class="nav pull-right">
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Administrativo", journals_path%></li>
+                <li><%= link_to "Perfil", current_user %></li>
+                <li><%= link_to "Configurações", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
+                <li>   
+                  <% if current_user.admin? %> 
+                    <%= link_to "Adicionar Usuário", signup_path %>
+                  <%end%>  
+                  <%= link_to "Sair", signout_path, method: "delete" %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li><%= link_to "Manutenção", signin_path %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+
+

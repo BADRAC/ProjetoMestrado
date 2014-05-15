@@ -1,0 +1,17 @@
+Afazeres
+
+1. Rever os métodos de DESTROY... remoção em cascata. Desde Journals até Autor. Na verdade, seria melhor fazer um status (1 válido para busca - 0 inválido), isso para manter um hitórico.
+
+2. Palavra-chave e autores... tem que checar antes se já existe na base.
+
+4. Rever os links externos... quebrados!??? rever?
+
+5. views - articles - new - O botão de voltar fica sem css???
+
+5.1. views - articles - edit - O botão de voltar fica sem css??? Mesma coisa!
+
+6. Versionamento x,y,z... tem embasamento teorico... email rafaela e carol?
+
+7. Paginar o resultado da busca... nao tenho ideia...
+
+	

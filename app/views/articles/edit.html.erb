@@ -1,0 +1,11 @@
+<% provide(:title, 'Artigo') %>
+
+<h1>Editar Artigos</h1>
+
+<%= render 'form' %>
+</br></br>
+<div class="row">
+  <div class="col-md-3">
+	<%= link_to 'Voltar', article_keywords_path(@article.id, @article.edition_id),  :class => 'btn btn-default btn-sm' %>
+  </div>
+</div>

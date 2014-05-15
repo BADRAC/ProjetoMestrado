@@ -1,0 +1,27 @@
+<%= form_for @journal, :html => { :class => 'form-horizontal' } do |f| %>
+  
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="row">
+  	<div class="col-md-6"> 
+    	<%= f.text_field :j_name, :class => 'form-control input', :placeholder=>"Nome do Periódico"%>
+  </div>
+  	</div>
+
+  <div class="row">
+  	<div class="col-md-3"> 
+    	<%= f.submit "Criar um novo Periódico", :class => 'btn btn-primary btn btn-block'  %>
+    </div>
+	</div>
+
+<% end %>
+
+
+
+
+
+
+
+
+
+  

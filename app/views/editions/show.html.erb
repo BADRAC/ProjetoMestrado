@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>E name:</strong>
+  <%= @edition.e_name %>
+</p>
+
+<p>
+  <strong>E date:</strong>
+  <%= @edition.e_date %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_edition_path(@edition) %> |
+<%= link_to 'Back', editions_path %>

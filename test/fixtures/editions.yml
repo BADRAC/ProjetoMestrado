@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  e_name: MyString
+  e_date: 2014-05-08
+  journal_id: 1
+
+two:
+  e_name: MyString
+  e_date: 2014-05-08
+  journal_id: 1

@@ -1,0 +1,33 @@
+<% provide(:title, 'Periódico') %>
+
+<h1>Lista de Periódicos Cadastrados</h1>
+
+<table class="table table-striped table-bordered table-condensed" style="width: 100%">
+  <thead>
+    <tr>
+      <th class="text-center">Periódicos</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @journals.each do |journal| %>
+      <tr>
+        <td><%= link_to journal.j_name, journal_editions_path(journal.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div class="row">
+  <div class="col-md-3">
+    <%= link_to 'Novo um novo Periódico', new_journal_path, :class => 'btn btn-primary btn btn-block'%>
+  </div>
+</div>
+</br>
+<p>
+  Download:
+  <%= link_to "CSV", journals_path(format: "csv") %> |
+  <%= link_to "Excel", journals_path(format: "xls") %>
+</p>

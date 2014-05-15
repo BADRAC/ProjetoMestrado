@@ -1,0 +1,16 @@
+<% if object.errors.any? %>
+	<div class="row">
+	  	<div class="col-md-6">
+	  		<div id="error_explanation">
+	    		<div class="bg-warning">
+	      			Existe(m) <%= pluralize(object.errors.count, "erro") %>.
+	    			<ul>
+	    				<% object.errors.full_messages.each do |msg| %>
+	      					<li>* <%= msg %></li>
+	    				<% end %>
+	    			</ul>
+	    		</div>
+	  		</div>
+	    </div>
+	</div>  
+<% end %>
