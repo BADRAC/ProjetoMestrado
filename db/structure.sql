@@ -162,24 +162,6 @@ CREATE TABLE books (
 
 
 --
--- Name: books_keywords; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE books_keywords (
-    book_id integer,
-    keyword_id integer
-);
-
-
---
--- Name: book_searches; Type: VIEW; Schema: public; Owner: -
---
-
-CREATE VIEW book_searches AS
-    (((SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, books.title AS term FROM books UNION SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, books.abstract AS term FROM books) UNION SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, authors.first_name AS term FROM ((authors_books JOIN books ON ((authors_books.book_id = books.id))) JOIN authors ON ((authors_books.author_id = authors.id)))) UNION SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, authors.last_name AS term FROM ((authors_books JOIN books ON ((authors_books.book_id = books.id))) JOIN authors ON ((authors_books.author_id = authors.id)))) UNION SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, keywords.kw_name AS term FROM ((books_keywords JOIN keywords ON ((books_keywords.keyword_id = keywords.id))) JOIN books ON ((books_keywords.book_id = books.id)));
-
-
---
 -- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -196,6 +178,16 @@ CREATE SEQUENCE books_id_seq
 --
 
 ALTER SEQUENCE books_id_seq OWNED BY books.id;
+
+
+--
+-- Name: books_keywords; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE books_keywords (
+    book_id integer,
+    keyword_id integer
+);
 
 
 --
@@ -559,8 +551,6 @@ INSERT INTO schema_migrations (version) VALUES ('20131208172654');
 INSERT INTO schema_migrations (version) VALUES ('20131208172758');
 
 INSERT INTO schema_migrations (version) VALUES ('20131208173039');
-
-INSERT INTO schema_migrations (version) VALUES ('20131210195502');
 
 INSERT INTO schema_migrations (version) VALUES ('20131210200431');
 
