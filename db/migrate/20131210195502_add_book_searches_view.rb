@@ -24,6 +24,9 @@ def up
 			JOIN books ON authors_books.book_id = books.id
 			JOIN authors ON authors_books.author_id = authors.id
 
+
+			
+
 	SQL
   end
 
