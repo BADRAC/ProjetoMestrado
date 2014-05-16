@@ -1,11 +1,15 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
+
 gem 'rails', '4.0.2'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3', '~> 1.3.9'
+group :development do
+  gem 'sqlite3', '~>1.3.9'
+end
 
 gem 'jquery-rails', '~> 3.1.0'
 gem 'foundation-rails', '~> 5.2.2.0'
@@ -31,3 +35,8 @@ gem 'will_paginate-bootstrap', '~> 1.0.0'
 
 # To use debugger
 # gem 'debugger'
+
+group :production do
+  gem 'pg', '~> 0.17.1'
+  gem 'rails_12factor', '0.0.2'
+end
