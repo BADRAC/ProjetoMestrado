@@ -162,6 +162,14 @@ CREATE TABLE books (
 
 
 --
+-- Name: book_searches; Type: VIEW; Schema: public; Owner: -
+--
+
+CREATE VIEW book_searches AS
+    (SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, books.title AS term FROM books UNION SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, books.abstract AS term FROM books) UNION SELECT books.id AS searchable_id, 'Book'::text AS searchable_type, authors.first_name AS term FROM ((authors_books JOIN books ON ((authors_books.book_id = books.id))) JOIN authors ON ((authors_books.author_id = authors.id)));
+
+
+--
 -- Name: books_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -552,6 +560,8 @@ INSERT INTO schema_migrations (version) VALUES ('20131208172758');
 
 INSERT INTO schema_migrations (version) VALUES ('20131208173039');
 
+INSERT INTO schema_migrations (version) VALUES ('20131210195502');
+
 INSERT INTO schema_migrations (version) VALUES ('20131210200431');
 
 INSERT INTO schema_migrations (version) VALUES ('20140508175946');
@@ -589,3 +599,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140515215505');
 INSERT INTO schema_migrations (version) VALUES ('20140515220403');
 
 INSERT INTO schema_migrations (version) VALUES ('20140515221220');
+
+INSERT INTO schema_migrations (version) VALUES ('20140516043306');
