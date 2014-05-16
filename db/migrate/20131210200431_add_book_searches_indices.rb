@@ -5,7 +5,6 @@ class AddBookSearchesIndices < ActiveRecord::Migration
       CREATE INDEX index_books_on_abstract ON books USING gin(to_tsvector('english', abstract));
       CREATE INDEX index_authors_on_first_name ON authors USING gin(to_tsvector('english', first_name));
       CREATE INDEX index_authors_on_last_name ON authors USING gin(to_tsvector('english', last_name));
-      CREATE INDEX index_keywords_on_kw_name ON keywords USING gin(to_tsvector('english', kw_name));
     SQL
   end
 
@@ -15,7 +14,6 @@ class AddBookSearchesIndices < ActiveRecord::Migration
       DROP INDEX index_books_on_abstract;
       DROP INDEX index_authors_on_first_name;
       DROP INDEX index_authors_on_last_name;
-      DROP INDEX index_keywords_on_kw_name; 
     SQL
   end
 
