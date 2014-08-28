@@ -10,6 +10,7 @@
 /tmp
 
 # Ignore other unneeded files.
+Afazeres.txt
 database.yml
 doc/
 *.swp
