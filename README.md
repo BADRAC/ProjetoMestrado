@@ -1,9 +1,10 @@
-## BADRAC - Base de Dados Referencial de Artigos Científicos - Projeto de Mestrado PPGCI - UFPB
+# BADRAC - Base de Dados Referencial de Artigos Científicos - Projeto de Mestrado PPGCI - UFPB
 
 Por Flavio Ribeiro Cordula
+
 Sob orientação do Professor Dr. Wagner Junqueira de Araújo
 
-#Passo a passo:
+###Passo a passo:
 
 Download do BADRAC
 
