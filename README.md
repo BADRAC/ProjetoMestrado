@@ -20,7 +20,7 @@ Faça a instalação do Ruby on Rails no seu ambiente. Para cada sistema operaci
 
 ####PostgreSQL
 
-Faça a instalaçãoo do postgreSQL no seu ambiente. A instalação é diferente dependendo do sistema operacional. O site oficial <http://www.postgresql.org> serve de tutorial para instalação. 
+Faça a instalação do postgreSQL no seu ambiente. A instalação é diferente dependendo do sistema operacional. O site oficial <http://www.postgresql.org> serve de tutorial para instalação. 
 
 Certifique-se que seu aplicação está funcionando 
 
@@ -39,17 +39,17 @@ O primeiro passo é instalar o Git no seu ambiente. O melhor a fazer é seguir a
 Depois de instalado, você deve configurar seu ambiente.  
 
 	$ git config --global user.name "Seu_Usuario"
-	$ git config --global user.email seu.email@examplo.com.br
+	$ git config --global user.email seu.email
 
 Substitua Seu_Usuario pelo seu nome de usuário.
 
-Substitua seu_email@exemplo.com.br pelo seu endereço de email.
+Substitua seu_email pelo seu endereço de email.
 
 Opcional:
 
 Escolher o editor de texto Git padrão.
 
-	$ git config --global core.editor "subl -w" 
+	$ git config --global core.editor "editor" 
 
 Substitua editor por "subl -w" para Sublime Text, "mate -w" para TextMate, "gvim -f" para gVim ou "mvim -f" para MacVim.
 
@@ -95,7 +95,7 @@ Esse serviço é gratuito e serve de plataforma host par aplicações Rails.
 
 ####Implantação Heroku
 
-Crie uma conta gratuita no endereço < https://www.heroku.com>.
+Crie uma conta gratuita no endereço <https://www.heroku.com>.
 
 Depois da conta criada, configure o login na linha de comando.
 
