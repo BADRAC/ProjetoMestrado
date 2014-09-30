@@ -1,4 +1,4 @@
-## BADRAC - Base de Dados Referencial de Artigos Científicos - Projeto de Mestrado PPGCI - UFPB
+## BADRAC - Base de Dados Referencial de Artigos Científicos ### - Projeto de Mestrado PPGCI - UFPB
 
 Por Flavio Ribeiro Cordula
 
