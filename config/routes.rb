@@ -26,14 +26,12 @@ Books::Application.routes.draw do
 
   root to: 'buscas#index'
 
-  match '/dica',     to: 'buscas#dica',           via: 'get'
-  match '/sobre',     to: 'buscas#sobreprojeto',    via: 'get'
-  match '/contato',  to: 'buscas#contato',        via: 'get'
-  match '/signup',  to: 'users#new',            via: 'get'
-  match '/signin',  to: 'sessions#new',         via: 'get'
-  match '/signout', to: 'sessions#destroy',     via: 'delete'
-
-  
-
+  match '/dica',      to: 'buscas#dica',          via: 'get'
+  match '/sobre',     to: 'buscas#sobreprojeto',  via: 'get'
+  match '/contato',   to: 'buscas#contato',       via: 'get'
+  match '/signup',    to: 'users#new',            via: 'get'
+  match '/signin',    to: 'sessions#new',         via: 'get'
+  match '/signout',   to: 'sessions#destroy',     via: 'delete'
+  match '/tutorial',  to: 'journals#tutorial',    via: 'get'
   
 end
