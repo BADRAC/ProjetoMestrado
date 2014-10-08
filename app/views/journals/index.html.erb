@@ -26,8 +26,17 @@
   </div>
 </div>
 </br>
+
+<%
+=begin
+%>
+
 <p>
   Download:
   <%= link_to "CSV", journals_path(format: "csv") %> |
   <%= link_to "Excel", journals_path(format: "xls") %>
 </p>
+
+<%
+=end
+%>
