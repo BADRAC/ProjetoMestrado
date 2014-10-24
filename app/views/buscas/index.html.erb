@@ -50,7 +50,7 @@
 		      <tr/>
 		      <tr>
 				<td class="text-center" style="width: 15%">Palavra(s)-chave</td>
-			    <td><%= article.keywords.map {|keyword| keyword.kw_name}.join(", ") %></td><tr/>
+			    <td><%= article.keywords.map {|keyword| keyword.kw_name}.join("; ") %></td><tr/>
 			  <tr>
 				<td class="text-center" style="width: 15%">URL de Acesso</td>
 			    <td><%= link_to article.url, article.url%></td>

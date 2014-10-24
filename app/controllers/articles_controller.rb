@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   
   def index
       @edition = Edition.find(params[:edition_id])
-      @articles = Article.where(:edition_id => @edition.id) 
+      @articles = Article.where(:edition_id => @edition.id).order('id DESC')
   end
 
   def new  

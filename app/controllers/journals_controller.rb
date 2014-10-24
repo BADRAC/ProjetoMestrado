@@ -5,13 +5,13 @@ class JournalsController < ApplicationController
 
   # lista os Journal (PERIÓDICOS!!!)
   def index
-    @journals = Journal.all.order('j_name')
+    @journals = Journal.all.order('LOWER(j_name) ASC')
  
-    respond_to do |format|
-      format.html
-      format.csv { send_data @journals.to_csv }
-      format.xls  { send_data @journals.to_csv(col_sep: "\t") }
-    end
+    #respond_to do |format|
+      #format.html
+      #format.csv { send_data @journals.to_csv }
+      #format.xls  { send_data @journals.to_csv(col_sep: "\t") }
+    #end
   end
 
   # GET /journals/1

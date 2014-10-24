@@ -1,10 +1,15 @@
 <% provide(:title, 'Edição') %>
 
 <h1>Periódico</h1>
-<p>
-  <strong>Periódico:</strong>
-  <%= @journal.j_name %>
-</p>
+
+<table class="table table-striped table-bordered table-condensed" style="width: 100%">
+  <tbody>     
+    <tr>
+      <td class="text-center" style="width: 12%">Periódico</td>
+      <td><%= @journal.j_name %></td>
+    <tr/>
+  </tbody>
+</table>
  
 <div class="row">
   <div class="col-md-3">
@@ -25,7 +30,7 @@
 <table class="table table-striped table-bordered table-condensed" style="width: 100%">
   <thead>
     <tr>
-      <th class="text-center">Edição</th>
+      <th class="text-center" style="width: 70%">Edição</th>
       <th class="text-center">Data da edição</th>
     </tr>
   </thead>
@@ -44,6 +49,6 @@
 
 <div class="row">
   <div class="col-md-3">
-    <%= link_to 'Criar uma nova Edição', new_journal_edition_path(@journal), :class => 'btn btn-primary btn btn-block'  %>
+    <%= link_to 'Criar uma nova Edição', new_journal_edition_path(@journal), :class => 'btn btn-primary btn-sm btn-block'  %>
   </div>
 </div>

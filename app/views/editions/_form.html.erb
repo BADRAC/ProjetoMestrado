@@ -16,7 +16,7 @@
 
   <div class="row">
     <div class="col-md-1">
-      <%= f.date_select :e_date %>
+      <%= f.date_select :e_date, discard_day:true, start_year: Date.today.year, end_year: 1990 %>
     </div>
   </div>
 
