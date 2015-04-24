@@ -1,0 +1,30 @@
+<% provide(:title, 'Autor') %>
+
+<h1>Crie um novo Autor</h1>
+
+<%= form_for ([@article, @author]), :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <div class="row">
+      <div class="col-md-6"> 
+        <%= f.autocomplete_field :fullname, autocomplete_author_fullname_article_authors_path %>
+      </div>
+   </div>   
+
+</br> </br> </br> </br>   
+
+  <div class="row">
+      <div class="col-md-3"> 
+        <%= f.submit "Criar Autor", :class => 'btn btn-primary btn-sm btn-block'  %>
+      </div>
+  </div>
+<% end %>
+
+
+</br> </br>
+
+<div class="row">
+  <div class="col-md-3">
+	<%= link_to 'Voltar', article_keywords_path(@article.id, @article.edition_id),  :class => 'btn btn-default btn-sm' %>
+  </div>
+</div>

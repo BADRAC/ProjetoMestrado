@@ -1,0 +1,29 @@
+<% provide(:title, 'Palavras-chave') %>
+
+<h1>Crie uma nova Palavra-chave</h1>
+
+<%= form_for ([@article, @keyword]), :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+ 
+  	<div class="row">
+      	<div class="col-md-6"> 
+        	<%= f.autocomplete_field :kw_name, autocomplete_keyword_kw_name_article_keywords_path %>
+      	</div>
+   	</div>
+
+</br> </br> </br> </br>
+
+  	<div class="row">
+      	<div class="col-md-3"> 
+        	<%= f.submit "Criar Palavra-chave", :class => 'btn btn-primary btn btn-block'  %>
+      	</div>
+    </div>
+<% end %>
+
+</br> </br>
+
+<div class="row">
+  <div class="col-md-3">
+	<%= link_to 'Voltar', article_keywords_path(@article.id, @article.edition_id),  :class => 'btn btn-default btn-sm' %>
+  </div> 
+</div>
