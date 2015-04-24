@@ -2,7 +2,8 @@
 
 <h3 class="text-center">Software Livre para Criação e Gestão de Bases de Dados Referenciais de Artigos Científicos – BADRAC
 </h3>
-<h2 class="text-center">Projeto de Mestrado - PPGCI da UFPB</h2>
+<h2 class="text-center">Projeto de Mestrado - PPGCI da UFPB<br/>
+Base de Relações Públicas criada a partir do software livre BADRAC</h2>
 
 <br/><br/>
 
@@ -44,7 +45,7 @@
 		      <tr/>
 		      <tr>
 		        <td class="text-center" style="width: 15%">Autor(es)</td>	
-		        <td><%= article.authors.map { |author| author.first_name + " " + author.last_name }.join(", ") %></td>
+		        <td><%= article.authors.map { |author| author.fullname }.join(", ") %></td>
 		      <tr/>  
 		      <tr>
 				<td class="text-center" style="width: 15%">Resumo</td>

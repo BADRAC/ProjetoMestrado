@@ -3,8 +3,9 @@ class ArticlesController < ApplicationController
                                       :update, :destroy]
   
   def index
-      @edition = Edition.find(params[:edition_id])
-      @articles = Article.where(:edition_id => @edition.id).order('id DESC')
+    @users = User.all
+    @edition = Edition.find(params[:edition_id])
+    @articles = Article.where(:edition_id => @edition.id).order('id DESC')
   end
 
   def new  
@@ -55,7 +56,7 @@ private
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def article_params
-      params.require(:article).permit(:title, :abstract, :url, :num_pages, :edition_id)
+      params.require(:article).permit(:title, :abstract, :url, :edition_id)
     end
   
 end

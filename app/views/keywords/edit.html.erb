@@ -1,13 +1,34 @@
 <% provide(:title, 'Palavras-chave') %>
 
-<h1>Atualize uma nova Palavra-chave</h1>
+<h1>Edite ou Remova a Palavra-chave</h1>
 
-<%= render 'form' %>
+<%= form_for ([@article, @keyword]), :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+ 
+  	<div class="row">
+      	<div class="col-md-6"> 
+        	<%= f.autocomplete_field :kw_name, autocomplete_keyword_kw_name_article_keywords_path %>
+      	</div>
+   	</div>
+
+</br> </br> </br> </br>
+
+  	<div class="row">
+      	<div class="col-md-3"> 
+        	<%= f.submit "Editar Palavra-chave", :class => 'btn btn-primary btn-sm btn-block'  %>
+      	</div>
+  	  
+		<div class="col-md-3" >  
+  			<%= link_to "Remover Palavra-chave", article_keyword_path(@article.id, @keyword) , :class => 'btn btn-danger btn-sm btn-block', method: :delete,
+                      data: { confirm: "Você tem certeza que deseja remover esta Palavra-chave??" } %>
+    	</div>
+    </div>
+<% end %>
 
 </br> </br>
 
 <div class="row">
   <div class="col-md-3">
 	<%= link_to 'Voltar', article_keywords_path(@article.id, @article.edition_id),  :class => 'btn btn-default btn-sm' %>
-  </div>
+  </div> 
 </div>

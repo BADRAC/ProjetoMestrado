@@ -3,7 +3,7 @@ class AddAdminUser < ActiveRecord::Migration
     ActiveRecord::Base.connection.execute <<-SQL
       INSERT INTO users(
             id, name, email, password_digest, admin)
-      VALUES (1, 'admintemp', 'admintemp@admin.com', 
+      VALUES (1, 'Admin', 'admin@admin.com', 
       		'$2a$10$gILy98QA.uTOHM3TbI7v1OnTBS6qkZGPvXZB2rSO/8r6KCSOjj3hy', 
       		true)
     SQL

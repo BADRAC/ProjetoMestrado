@@ -15,6 +15,7 @@ group :development do
 end
 
 gem 'jquery-rails', '~> 3.1.0'
+gem 'jquery-ui-rails'
 gem 'foundation-rails', '~> 5.2.2.0'
 gem 'pg', '~> 0.17.1'
 
@@ -36,8 +37,15 @@ gem 'bcrypt-ruby', '3.1.2'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap', '~> 1.0.0'
 
+
+#autocomplete
+gem 'rails4-autocomplete'
+
 # To use debugger
 # gem 'debugger'
+
+#Renomer apps rails >4.0.0
+#gem 'rails-rename', '~> 1.0.0'
 
 group :production do
   gem 'pg', '~> 0.17.1'

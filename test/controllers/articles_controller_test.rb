@@ -18,7 +18,7 @@ class ArticlesControllerTest < ActionController::TestCase
 
   test "should create article" do
     assert_difference('Article.count') do
-      post :create, article: { abstract: @article.abstract, edition_id: @article.edition_id, num_pages: @article.num_pages, title: @article.title, url: @article.url }
+      post :create, article: { abstract: @article.abstract, edition_id: @article.edition_id, title: @article.title, url: @article.url }
     end
 
     assert_redirected_to article_path(assigns(:article))
@@ -35,7 +35,7 @@ class ArticlesControllerTest < ActionController::TestCase
   end
 
   test "should update article" do
-    patch :update, id: @article, article: { abstract: @article.abstract, edition_id: @article.edition_id, num_pages: @article.num_pages, title: @article.title, url: @article.url }
+    patch :update, id: @article, article: { abstract: @article.abstract, edition_id: @article.edition_id, title: @article.title, url: @article.url }
     assert_redirected_to article_path(assigns(:article))
   end
 

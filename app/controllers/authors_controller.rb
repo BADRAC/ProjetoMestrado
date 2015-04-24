@@ -1,4 +1,6 @@
 class AuthorsController < ApplicationController
+autocomplete :author, :fullname, :full => true
+
 before_action :signed_in_user, only: [:index, :new, :edit, :create, 
                                       :update, :destroy]
 before_action :set_author, only: [:show, :edit, :update, :destroy]
@@ -20,34 +22,33 @@ before_action :set_author, only: [:show, :edit, :update, :destroy]
                                                         #AND artigos_palavrachaves.artigo_id = artigo_id") 
   end
 
-  # GET /keywords/1
   def show
   end
 
-  # GET /keywords/new
   def new
     @article = Article.find (params[:article_id])
     @author = Author.new
   end
 
-  # GET /keywords/1/edit
   def edit
     @article = Article.find (params[:article_id])
     @author = Author.find(params[:id])
   end
 
-  # POST /keywords
   def create
     
-    #if Keyword.where(:kw_name => valor do submit).blank?
-      #4.4.1.15 collection.build(attributes = {})
-    #else
-      @author = Author.new(author_params)
-      @article = Article.find (params[:article_id])
-      @author.articles << @article
-    #end
+      #Funciona perfeito. Mas insere repetidos.
+      #@author = Author.new(author_params)
+      #@article = Article.find (params[:article_id])
+      #@author.articles << @article
+      #FIM
 
-    
+      #Só insere em autores se não existir.
+      #mas insere na junction table.
+      @article = Article.find (params[:article_id])
+      @author = Author.where(author_params).first_or_create  
+      @author.articles << @article
+
     respond_to do |format|
       if @author.save
         format.html { redirect_to article_keywords_path(@article.id, @article.edition_id) }
@@ -74,9 +75,16 @@ before_action :set_author, only: [:show, :edit, :update, :destroy]
     end
   end
 
-  # DELETE /keywords/1
+    # DELETE HABTM
   def destroy
-    
+    article = Article.find(params[:article_id])
+    author = article.authors.find(params[:id])
+     if author
+        article.authors.delete(author)
+     end
+
+     flash[:success] = "Autor Removido com Sucesso."
+     redirect_to article_keywords_path(article.id, article.edition_id)
   end
 
   private
@@ -87,6 +95,6 @@ before_action :set_author, only: [:show, :edit, :update, :destroy]
 
     # Only allow a trusted parameter "white list" through.
     def author_params
-      params.require(:author).permit(:first_name, :last_name)
+      params.require(:author).permit(:fullname)
     end
 end

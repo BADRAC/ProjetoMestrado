@@ -5,6 +5,7 @@ class JournalsController < ApplicationController
 
   # lista os Journal (PERIÓDICOS!!!)
   def index
+    @users = User.all
     @journals = Journal.all.order('LOWER(j_name) ASC')
  
     #respond_to do |format|
@@ -49,8 +50,9 @@ class JournalsController < ApplicationController
 
   # DELETE /journals/1
   def destroy
-    @journal.destroy
-    redirect_to journals_url, notice: 'Journal was successfully destroyed.'
+    Journal.find(params[:id]).destroy
+    flash[:success] = "Periódico Removido."
+    redirect_to journals_path
   end
 
   private

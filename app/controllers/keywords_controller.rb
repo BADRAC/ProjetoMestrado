@@ -1,11 +1,9 @@
 class KeywordsController < ApplicationController
+  autocomplete :keyword, :kw_name, :full => true
+
   before_action :set_keyword, only: [:show, :edit, :update, :destroy]
   before_action :signed_in_user, only: [:index, :new, :edit, :create, 
                                       :update, :destroy]
-  # GET /keywords
-  #def index
-    #@keywords = Keyword.all
-  #end
 
   def index
     #Quando faço - @edicao = Edicao.find (params[:edicao_id]) - nao tem id de edicao
@@ -25,53 +23,38 @@ class KeywordsController < ApplicationController
                       AND articles_keywords.article_id = :id", {:id => params[:article_id]}])  
               
     @opas =  Keyword.find_by_sql([
-              "SELECT id, first_name, last_name 
+              "SELECT id, fullname
               FROM    authors,
                       articles_authors
               WHERE   authors.id = articles_authors.author_id
                       AND articles_authors.article_id = :id", {:id => params[:article_id]}])
-  
   end
 
-  # GET /keywords/1
   def show
   end
 
-  # GET /keywords/new
   def new
     @article = Article.find (params[:article_id])
     @keyword = Keyword.new
   end
 
-  # GET /keywords/1/edit
   def edit
     @article = Article.find (params[:article_id])
     @keyword = Keyword.find(params[:id])
   end
 
-  # POST /keywords
   def create
-    #Se a palavra que tentar ser criada já existir,
-    #entra nesse array.
-    # status = OK!
-    #@existe =  Keyword.find_by_sql([
-               # "SELECT kw_name
-                #FROM    keywords
-                #WHERE   keywords.kw_name = :keyword_name", 
-                #{:keyword_name => params[:keyword][:kw_name]}])
-
-    #Se NÃO existir palavra no array - cria palavra e a relacao na join table
-    # status = OK!
-    #if @existe.empty?
-      @keyword = Keyword.new(keyword_params)
-      @article = Article.find (params[:article_id])
-      @keyword.articles << @article
-    #Se existir palavra no array - cria APENAS a relacao na join table
-    # status = FUDEU!
-    #else
-    #  @article = Article.find (params[:article_id])
+      #Funciona perfeito. Mas insere repetidos.
+      #@keyword = Keyword.new(keyword_params)
+      #@article = Article.find (params[:article_id])
       #@keyword.articles << @article
-    #end
+      #FIM
+
+      #Só insere em autores se não existir.
+      #mas insere na junction table.
+      @article = Article.find (params[:article_id])
+      @keyword = Keyword.where(keyword_params).first_or_create  
+      @keyword.articles << @article
     
     respond_to do |format|
       if @keyword.save
@@ -98,10 +81,17 @@ class KeywordsController < ApplicationController
     end
   end
 
-  # DELETE /keywords/1
+  # DELETE HABTM
   def destroy
-    @keyword.destroy
-    redirect_to keywords_url, notice: 'Keyword was successfully destroyed.'
+      article = Article.find(params[:article_id])
+      keyword = article.keywords.find(params[:id])
+     if keyword
+        article.keywords.delete(keyword)
+     end
+
+     flash[:success] = "Palavra-chave Removida com sucesso."
+     redirect_to article_keywords_path(article.id, article.edition_id)
+
   end
 
   private

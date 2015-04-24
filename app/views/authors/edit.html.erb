@@ -1,8 +1,29 @@
 <% provide(:title, 'Autor') %>
 
-<h1>Atualize um novo Autor</h1>
+<h1>Edite ou Remova o Autor</h1>
 
-<%= render 'form' %>
+<%= form_for ([@article, @author]), :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  	<div class="row">
+      <div class="col-md-6"> 
+        <%= f.autocomplete_field :fullname, autocomplete_author_fullname_article_authors_path %>
+      </div>
+   	</div>
+
+</br> </br> </br> </br> 
+
+  	<div class="row">
+      	<div class="col-md-3"> 
+        	<%= f.submit "Editar Autor", :class => 'btn btn-primary btn-sm btn-block'  %>
+      	</div>
+		
+		<div class="col-md-3" >  
+  			<%= link_to "Remover Autor", article_author_path(@article.id, @author) , :class => 'btn btn-danger btn-sm btn-block', method: :delete,
+                      data: { confirm: "Você tem certeza que deseja remover esta Palavra-chave??" } %>
+    	</div>
+  	</div>
+<% end %>
 
 </br> </br>
 

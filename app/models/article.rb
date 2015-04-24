@@ -4,9 +4,8 @@ class Article < ActiveRecord::Base
   has_and_belongs_to_many :authors
   has_and_belongs_to_many :keywords
 
-  validates :title, :abstract, presence: true
-  validates :num_pages, numericality: { only_integer: true } 
-
+  #validates :title, :abstract, presence: true
+  validates :title, presence: true
   validates :url,
   			presence: true, 
   			format: { with: /http:|https:/, 

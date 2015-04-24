@@ -2,9 +2,10 @@ class EditionsController < ApplicationController
 before_action :signed_in_user, only: [:index, :new, :edit, :create, 
                                       :update, :destroy]
 
-  def index    
+  def index 
+    @users = User.all   
     @journal = Journal.find(params[:journal_id])
-    @editions = Edition.where(:journal_id => @journal.id).order('e_date DESC')
+    @editions = Edition.where(:journal_id => @journal.id).order('e_date DESC, e_name DESC')
   end
 
   def new  

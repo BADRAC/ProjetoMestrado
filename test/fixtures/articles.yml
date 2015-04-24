@@ -4,12 +4,10 @@ one:
   title: MyString
   abstract: MyText
   url: MyString
-  num_pages: 1
   edition_id: 1
 
 two:
   title: MyString
   abstract: MyText
   url: MyString
-  num_pages: 1
   edition_id: 1

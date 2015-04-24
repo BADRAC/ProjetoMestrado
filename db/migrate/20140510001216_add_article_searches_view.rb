@@ -19,16 +19,7 @@ class AddArticleSearchesView < ActiveRecord::Migration
 
 			SELECT articles.id AS searchable_id, 
 			'Article' AS searchable_type, 
-			authors.first_name AS term
-			FROM articles_authors
-			JOIN authors ON articles_authors.author_id = authors.id
-			JOIN articles ON articles_authors.article_id = articles.id
-
-			UNION
-
-			SELECT articles.id AS searchable_id, 
-			'Article' AS searchable_type, 
-			authors.last_name AS term
+			authors.fullname AS term
 			FROM articles_authors
 			JOIN authors ON articles_authors.author_id = authors.id
 			JOIN articles ON articles_authors.article_id = articles.id

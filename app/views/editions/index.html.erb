@@ -16,7 +16,11 @@
 <%= link_to 'Editar este periódico', edit_journal_path(@journal), :class => 'btn btn-primary btn-sm btn-block'%>
   </div>
   <div class="col-md-3">
-<%= link_to 'Remover', @journal, :class => 'btn btn-primary btn-sm btn-block disabled',  method: :delete, data: { confirm: 'Você tem certeza que deseja remover este periódico?'} %>
+    <% if current_user.admin? && !current_user?(@users) %>
+      <%= link_to 'Remover este Periódico', @journal, :class => 'btn btn-danger btn-sm btn-block',  method: :delete, data: { confirm: 'Você tem certeza que deseja remover permanentemente este periódico e todas as edições e artigos a ele vinculadas?'} %>
+    <% else %>
+      <%= link_to 'Remover este Periódico', @journal, :class => 'btn btn-danger btn-sm btn-block disabled',  method: :delete, data: { confirm: 'Você tem certeza que deseja remover permanentemente este periódico e todas as edições e artigos a ele vinculadas?'} %>
+    <% end %>
   </div>
   <div class="col-md-3">
 <%= link_to 'Voltar', journals_path, :class => 'btn btn-default btn-sm'%>
@@ -31,7 +35,7 @@
   <thead>
     <tr>
       <th class="text-center" style="width: 70%">Edição</th>
-      <th class="text-center">Data da edição</th>
+      <th class="text-center">Ano da Edição</th>
     </tr>
   </thead>
 
@@ -39,7 +43,7 @@
     <% @editions.each do |edition| %>
       <tr>        
         <td><%= link_to edition.e_name, edition_articles_path(edition.id) %></td>
-        <td><%= edition.e_date %></td>
+        <td><%= edition.e_date.year %></td>
       </tr>
     <% end %>
   </tbody>
